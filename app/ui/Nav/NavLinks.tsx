@@ -21,7 +21,8 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-row lg:flex-col px-3 py-2 w-full justify-between bg-white lg:bg-sidebar border-y border-divider lg:border-y-0">
+    <div className="flex flex-row lg:flex-col px-3 py-2 w-full justify-between bg-white lg:bg-sidebar border-y border-divider lg:border-y-0 lg:gap-2">
+      <p className="hidden lg:block text-content-muted">Your Space</p>
       {links.map((link) => {
         const LinkIcon = link.icon;
 
@@ -30,7 +31,7 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              "flex flex-col md:flex-row items-center justify-center md:justify-start  w-22.75 h-14.5 md:w-full md:h-12 gap-1.25 rounded-[10px]",
+              "flex flex-col md:flex-row items-center justify-center md:justify-start  w-22.75 h-14.5 md:w-full md:h-12 gap-1.25 lg:gap-3 lg:px-3 rounded-[10px]",
               {
                 "bg-primary": pathname == link.href,
                 "bg-white lg:bg-sidebar": pathname != link.href,

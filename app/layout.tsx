@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "./ui/Nav/Nav";
+import Breadcrumbs from "./ui/Breadcrumbs/Breadcrumbs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col md:flex-row">
         <Nav />
-        <main className="flex-1 py-5 px-5 lg:px-9 lg:py-7">{children}</main>
+        <main className="flex-1 ">
+          <Breadcrumbs />
+          <div className="px-5 lg:px-9 py-5 lg:py-7 ">{children}</div>
+        </main>
       </body>
     </html>
   );
