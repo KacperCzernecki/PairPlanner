@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col md:flex-row">
         <Nav />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 py-5 px-5 lg:px-9 lg:py-7">{children}</main>
       </body>
     </html>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import {
@@ -9,7 +8,6 @@ import {
   CalendarIcon,
   SparklesIcon,
   FlagIcon,
-  LinkIcon,
 } from "@heroicons/react/24/outline";
 
 export default function NavLinks() {
@@ -21,10 +19,9 @@ export default function NavLinks() {
   ];
 
   const pathname = usePathname();
-  const router = useRouter();
 
   return (
-    <div className="flex flex-row lg:flex-col px-3 py-2 w-full">
+    <div className="flex flex-row lg:flex-col px-3 py-2 w-full justify-between bg-white lg:bg-sidebar border-y border-divider lg:border-y-0">
       {links.map((link) => {
         const LinkIcon = link.icon;
 
@@ -32,10 +29,28 @@ export default function NavLinks() {
           <Link
             key={link.name}
             href={link.href}
-            className="flex flex-col items-center w-22.75 h-14.5"
+            className={clsx(
+              "flex flex-col md:flex-row items-center justify-center md:justify-start  w-22.75 h-14.5 md:w-full md:h-12 gap-1.25 rounded-[10px]",
+              {
+                "bg-primary": pathname == link.href,
+                "bg-white lg:bg-sidebar": pathname != link.href,
+              },
+            )}
           >
-            <LinkIcon className="w-5.5 h-5.5" />
-            <span>{link.name}</span>
+            <LinkIcon
+              className={clsx("w-5.5 h-5.5", {
+                "text-accent": pathname == link.href,
+                "text-content-muted": pathname != link.href,
+              })}
+            />
+            <span
+              className={clsx("", {
+                "text-white": pathname == link.href,
+                "text-content": pathname != link.href,
+              })}
+            >
+              {link.name}
+            </span>
           </Link>
         );
       })}

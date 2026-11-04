@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Logo() {
   return (
-    <div className="flex items-center gap-2 w-96 h-20 lg:w-45 lg:h-10">
+    <div className="flex items-center gap-2 w-96 h-20 lg:w-45 lg:h-10 px-5 lg:px-0">
       <Image
         src={"/logo/logo.svg"}
         alt="Pair Planner Logo"
